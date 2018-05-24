@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 import './MedXToken.sol';
-import 'zeppelin-solidity/contracts/token/MintableToken.sol';
+import 'zeppelin-solidity/contracts/token/ERC20/MintableToken.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract TokenAirDrop is Ownable {
@@ -23,9 +23,11 @@ contract TokenAirDrop is Ownable {
     for (uint256 i = 0; i<receivers.length; i++) {
       address receiver = receivers[i];
       uint256 amount = values[i];
+
       token.transfer(receiver, amount);
+      airDropHistory[receiver] += amount;
+      
       AirDrop(receiver, amount);
-      airDropHistory[receiver] = amount;
     }
   }
 
