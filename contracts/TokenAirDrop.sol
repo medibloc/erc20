@@ -13,6 +13,7 @@ contract TokenAirDrop is Ownable {
   function TokenAirDrop() {
     token = new MedXToken();
     token.mint(address(this), (10 ** 10) * (10 ** 8));
+    token.transferOwnership(msg.sender);
   }
 
   // change to array
@@ -20,7 +21,7 @@ contract TokenAirDrop is Ownable {
     require(receivers.length != 0);
     require(receivers.length == values.length);
 
-    for (uint256 i = 0; i<receivers.length; i++) {
+    for (uint256 i = 0; i < receivers.length; i++) {
       address receiver = receivers[i];
       uint256 amount = values[i];
 
@@ -29,9 +30,5 @@ contract TokenAirDrop is Ownable {
       
       AirDrop(receiver, amount);
     }
-  }
-
-  function handOverTokenOwnership(address _newOwner) onlyOwner public {
-    token.transferOwnership(_newOwner);
   }
 }
