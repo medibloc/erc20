@@ -5,7 +5,6 @@ import 'zeppelin-solidity/contracts/token/ERC20/MintableToken.sol';
 import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract TokenAirDrop is Ownable {
-  using SafeMath for uint256;
   MintableToken public token;
   mapping (address => uint256) public airDropHistory;
   event AirDrop(address _receiver, uint256 _amount);
