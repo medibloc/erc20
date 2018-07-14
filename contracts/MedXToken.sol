@@ -6,5 +6,5 @@ import 'zeppelin-solidity/contracts/token/ERC20/MintableToken.sol';
 contract MedXToken is PausableToken, MintableToken {
   string public name = "MEDX TOKEN";
   string public symbol = "MEDX";
-  uint256 public decimals = 8;
+  uint8 public decimals = 8;
 }
